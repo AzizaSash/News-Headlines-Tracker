@@ -32,18 +32,15 @@ def fetch_cnn_headlines():
 
 
 def save_headlines_to_csv(data, filename):
-    df = pd.DataFrame(data, columns=['Source', 'Headline'])
+    df = pd.DataFrame(data, columns=['Source', 'Headline', 'Link'])
     df.to_csv(filename, index=False)
-
 
 if __name__ == "__main__":
     bbc_headlines = fetch_bbc_headlines()
     cnn_headlines = fetch_cnn_headlines()
-    # reuters_headlines = fetch_reuters_headlines()
 
     all_headlines = []
-    all_headlines.extend([('BBC', headline) for headline in bbc_headlines])
-    all_headlines.extend([('CNN', headline) for headline in cnn_headlines])
-    # all_headlines.extend([('Reuters', headline) for headline in reuters_headlines])
+    all_headlines.extend([('BBC', headline['title'], headline['link']) for headline in bbc_headlines])
+    all_headlines.extend([('CNN', headline['headline'], headline['link']) for headline in cnn_headlines])
 
     save_headlines_to_csv(all_headlines, 'headlines.csv')

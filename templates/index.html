@@ -4,21 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Headlines Tracker</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
   </head>
   <body>
-    <h1>News Headlines</h1>
-    <table>
-      <tr>
-        <th>Source</th>
-        <th>Headline</th>
-      </tr>
-      {% for headline in headlines %}
-      <tr>
-        <td>{{ headline['Source'] }}</td>
-        <td>{{ headline['Headline'] }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+    <header>
+      <h1>News Headlines Tracker</h1>
+    </header>
+    <main class="container">
+      <h2>Latest News</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Headline</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for headline in headlines %}
+          <tr>
+            <td>{{ headline['Source'] }}</td>
+            <td>
+              <a href="{{ headline['Link'] }}">{{ headline['Headline'] }}</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
   </body>
 </html>
