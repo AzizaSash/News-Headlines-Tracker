@@ -4,21 +4,22 @@ import pandas as pd
 
 
 def fetch_bbc_headlines():
-    url = 'https://www.bbc.com/news'
-    response = requests.get(url)
+    base_url = 'https://www.bbc.com'
+    response = requests.get(base_url)
     soup = BeautifulSoup(response.content, 'html.parser')
-    headlines = [h2.text for h2 in soup.find_all('h2')]
+    headlines = [{'title': a.h2.text, 'link': base_url + a['href']} 
+                 for a in soup.find_all('a', attrs={'data-testid': 'internal-link'}) 
+                 if a.h2 and a.h2.get('data-testid') == 'card-headline']
     return headlines
-
 
 def fetch_cnn_headlines():
     url = 'https://www.cnn.com/world'
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
-    headlines = [span.text for span in soup.find_all(
-        'span', class_='container__headline-text')]
+    headlines = [{'headline': a.find('span', class_='container__headline-text').text, 'link': a['href']} 
+                 for a in soup.find_all('a', class_='container__link container__link--type-article container_lead-plus-headlines__link') 
+                 if a.find('span', class_='container__headline-text')]
     return headlines
-
 
 """def fetch_reuters_headlines():
     url = 'https://www.reuters.com/world/'
