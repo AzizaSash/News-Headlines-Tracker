@@ -1,10 +1,10 @@
-# News Headlines Hracker
+# News Headlines Tracker
 
 This project is a web application that scrapes and displays the latest news headlines from CNN, BBC, and The New York Times. Built using Jupyter Notebook, Python, Flask, HTML, and CSS, this project demonstrates web scraping, data processing, and web development techniques.
 
 ## About This Project
 
-The News Headlines Hracker application collects the latest news headlines from major news sources such as CNN, BBC, and The New York Times. The project uses web scraping to gather the headlines, which are then displayed on a user-friendly web interface built with Flask, HTML, and CSS.
+The News Headlines Tracker application collects the latest news headlines from major news sources such as CNN, BBC, and The New York Times. The project uses web scraping to gather the headlines, which are then displayed on a user-friendly web interface built with Flask, HTML, and CSS.
 
 ## Features
 
