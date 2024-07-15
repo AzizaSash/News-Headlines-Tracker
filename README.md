@@ -24,3 +24,8 @@ The News Headlines Tracker application collects the latest news headlines from m
 - Data Processing
 - Web Development
 
+## Sources
+
+- BBC
+- CNN
+- NewYork Times
